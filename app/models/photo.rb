@@ -1,3 +1,4 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :poster
+  mount_uploader :poster, AvatarUploader
+  attr_accessible :poster, :poster_cache, :remove_poster
 end

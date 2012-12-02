@@ -1,0 +1,16 @@
+<% if f.object.poster? %>
+<div>
+	<%= image_tag(f.object.poster_url, class: 'image-preview') %>
+	<%= f.input :remove_poster, :as => :boolean %>
+</div>
+<% end %>
+
+<div>
+	<%= f.input :poster, hint: "选择您要上传的图片." %>
+	<%= f.hidden_field :poster_cache %>
+</div>
+
+<div class="form-actions">
+	<%= f.button :submit, class: "btn btn-primary" %>
+	<%= link_to "返回", admin_photos_path %>
+</div>
