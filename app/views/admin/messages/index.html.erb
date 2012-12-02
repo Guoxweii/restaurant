@@ -1,0 +1,20 @@
+<style type="text/css">
+.stack a {
+	width: 100%;
+}
+</style>
+
+<div class="page-header">
+	<h1>选择需要发布的模块</h1>
+</div>
+
+<% @categories.each do |category| %>
+<div class="span4">
+	<%= link_to admin_message_path(category), class: "publishable" do %>
+	<div class="alert alert-block alert-<%= cycle('success', 'warning', 'error', 'info') %>">
+		<h4 class="alert-heading"><%= category.en_name %></h4>
+		<h4 class="alert-heading"><%= category.se_name %></h4>
+	</div>
+	<% end %>
+</div>
+<% end %>

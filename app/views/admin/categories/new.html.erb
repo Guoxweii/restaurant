@@ -1,0 +1,5 @@
+<h2 class="page-header">新增分类</h2>
+
+<%= simple_form_for(@category, :url => admin_categories_path(@category) ) do |f| %>
+	<%= render :partial => "form", :locals => { :f => f } %>
+<% end %>

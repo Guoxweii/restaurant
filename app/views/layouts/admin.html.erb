@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+	<title>Restaurant</title>
+	<meta charset="utf-8">
+	<%= stylesheet_link_tag "admin", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= javascript_include_tag "ckeditor/init" %>
+	<%= csrf_meta_tags %>
+	<%= yield :head %>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container">
+			<a class="brand" href="#">Restaurant</a>
+
+			<% if user_signed_in? %>
+			<ul class="nav">
+				<li>
+					<%= link_to "页面管理", admin_messages_path %>
+				</li>
+				<li>
+					<%= link_to "模块管理", admin_categories_path %>
+				</li>
+			</ul>
+
+			<ul class="nav pull-right">
+				<li class=""><a href="#"><%= current_user.email %></a></li> 
+				<li class=""><%= link_to '注销', destroy_user_session_path, :method => 'delete' %></li>
+			</ul>
+			<% end %>
+
+		</div>
+	</div>
+</div>
+
+<div class="container content">
+	<% flash.each do |code| %>
+	<div class="alert alert-success fade in">
+		<a class="close" data-dismiss="alert">×</a>
+		<%= flash[code[0]] %>
+	</div>
+	<% end %>
+
+	<%= yield %>
+
+	<footer></footer>
+</div>
+
+</body>
+</html>

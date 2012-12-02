@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1><%= @category.en_name %>/<%= @category.se_name %></h1>
+</div>
+<% if @item %>
+<table class="container table table-bordered">
+  <tr>
+    <td>
+      英文内容
+    </td>
+    <td>
+      <%= raw @item.en_content %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      瑞典文内容
+    </td>
+    <td>
+      <%= raw @item.se_content %>
+    </td>
+  </tr>
+</table>
+<%= link_to "编辑#{@category.en_name}页面", edit_admin_message_path(@item, :category_id => @category.id) %>
+<% else %>
+<%= link_to "新建#{@category.en_name}页面", new_admin_message_path(:category_id => @category) %>
+<% end -%>

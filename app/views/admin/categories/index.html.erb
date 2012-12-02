@@ -1,0 +1,12 @@
+<%= content_for :head do %>
+    <style type="text/css">
+        .btn-group {
+            float: right;
+        }
+    </style>
+<% end %>
+
+<h2 class="page-header">模块列表</h2>
+<%= render :partial => "list" %>
+<br />
+<%= link_to "新建模块", new_admin_category_path,:class => "btn primary-btn" %>
