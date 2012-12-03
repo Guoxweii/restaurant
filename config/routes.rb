@@ -13,7 +13,9 @@ Restaurant::Application.routes.draw do
       resources :items
     end
     
-    resources :messages
+    resources :messages do
+      get 'carousel', :on => :member
+    end
     
     resources :photos
   end

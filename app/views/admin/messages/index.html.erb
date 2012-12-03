@@ -10,11 +10,20 @@
 
 <% @categories.each do |category| %>
 <div class="span4">
-	<%= link_to admin_message_path(category), class: "publishable" do %>
-	<div class="alert alert-block alert-<%= cycle('success', 'warning', 'error', 'info') %>">
-		<h4 class="alert-heading"><%= category.en_name %></h4>
-		<h4 class="alert-heading"><%= category.se_name %></h4>
-	</div>
+	<% if category.code == "home" %>
+		<%= link_to carousel_admin_message_path(category), class: "publishable" do %>
+			<div class="alert alert-block alert-<%= cycle('success', 'warning', 'error', 'info') %>">
+				<h4 class="alert-heading"><%= category.en_name %></h4>
+				<h4 class="alert-heading"><%= category.se_name %></h4>
+			</div>
+		<% end %>
+	<% else %>
+		<%= link_to admin_message_path(category), class: "publishable" do %>
+			<div class="alert alert-block alert-<%= cycle('success', 'warning', 'error', 'info') %>">
+				<h4 class="alert-heading"><%= category.en_name %></h4>
+				<h4 class="alert-heading"><%= category.se_name %></h4>
+			</div>
+		<% end %>
 	<% end %>
 </div>
 <% end %>

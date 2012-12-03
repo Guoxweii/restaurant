@@ -34,10 +34,15 @@ class Admin::MessagesController < Admin::BaseController
     @category = Category.find(params[:category_id])
     @item = @category.items.find(params[:id])
     if @item.update_attributes(params[:item])
-      flash[:notice] = "创建成功!"
+      flash[:notice] = "修改成功!"
       redirect_to admin_message_path(@category)
     else
       render :new
     end
+  end
+  
+  def carousel
+    @category = Category.find(params[:id])
+    @photos = Photo.all
   end
 end
