@@ -1,0 +1,15 @@
+<div class="left-menu">
+	<ul>
+		<% @categories.each do |categoty| %>
+			<% if @categoty == categoty %>
+				<li class="active">
+					<%= show_value_with_language(categoty, "name") %>
+				</li>
+			<% else %>
+				<li>
+					<%= link_to show_value_with_language(categoty, "name"), category_path(categoty) %>
+				</li>
+			<% end -%>
+		<% end -%>
+	</ul>
+</div>

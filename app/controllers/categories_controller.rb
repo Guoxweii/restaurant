@@ -4,6 +4,7 @@ class CategoriesController < BaseController
   end
   
   def show
+    @categories = Category.all
     case 
     when !params[:id] || Category.find(params[:id]).code == "home"
       @category = Category.find_by_code("home")
@@ -11,6 +12,7 @@ class CategoriesController < BaseController
       render :action => "home"
     when Category.find(params[:id]).code == "contact"
       @category = Category.find_by_code("contact")
+      @item = @category.items.first
       render :action => "contact"
     else
       @category = Category.find(params[:id])

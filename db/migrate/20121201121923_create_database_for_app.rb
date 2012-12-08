@@ -14,8 +14,8 @@ class CreateDatabaseForApp < ActiveRecord::Migration
     
     create_table(:items) do |t|
       t.integer :category_id
-      t.string :en_content
-      t.string :se_content
+      t.text :en_content
+      t.text :se_content
       t.timestamps
     end
     

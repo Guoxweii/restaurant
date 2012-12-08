@@ -9,15 +9,11 @@
     });
   </script>
 <% end -%>
-
-<div class="page-header">
-  <h1><%= @category.en_name %>/<%= @category.se_name %></h1>
+<%= render :partial => "left-menu" %>
+<div class="content">
+  <ul id="mycarousel" class="jcarousel-skin-tango">
+    <% @photos.each_with_index do |photo, index| %>
+      <li><%= image_tag photo.poster_url(:thumb), :size => "800*500"%></li>
+    <% end %>
+  </ul>
 </div>
-
-<%= link_to "图片管理", admin_photos_path, :class => "btn btn-primay" %>
-
-<ul id="mycarousel" class="jcarousel-skin-tango">
-  <% @photos.each_with_index do |photo, index| %>
-    <li><%= image_tag photo.poster_url(:thumb), :size => "800*500"%></li>
-  <% end %>
-</ul>
