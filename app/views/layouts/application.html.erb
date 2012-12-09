@@ -8,7 +8,15 @@
   <%= yield :head %>
 </head>
 <body>
-<div class="header"></div>
+<div class="header">
+	<div class="dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= session[:local] == "en" ? "English" : "svenska" %></a>
+		<ul class="dropdown-menu">
+			<li><%= link_to "English", categories_path(:local => "en") %></li>
+			<li><%= link_to "svenska", categories_path(:local => "se") %></li>
+		</ul>
+	</div>
+</div>
 <div class="wrapper">
 	<%= yield %>
 </div>
