@@ -2,6 +2,10 @@
 	.left-menu {
 		float: left;
 		width: 200px;
+		
+		ul {
+			list-style: none;
+		}
 	}
 	.content {
 		width: auto;
