@@ -20,8 +20,8 @@
     </td>
   </tr>
 </table>
-<%= link_to "编辑#{@category.en_name}页面", edit_admin_message_path(@item, :category_id => @category.id) %>
+<%= link_to "编辑#{@category.en_name}页面", edit_admin_message_path(@item, :category_id => @category.id), :class => "btn btn-primay" %>
 <% else %>
-<%= link_to "新建#{@category.en_name}页面", new_admin_message_path(:category_id => @category) %>
+<%= link_to "新建#{@category.en_name}页面", new_admin_message_path(:category_id => @category), :class => "btn btn-primay"%>
 <% end -%>
 <%= link_to "返回", admin_messages_path(@category), :class => "btn btn-primay" %>

@@ -3,3 +3,14 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    models:
+      category: "模块"
+      item:     "信息"
+    attributes:
+      category:
+        en_name: "英文名称"
+        se_name: "瑞典名称"
+      item:
+        en_content: "英文内容"
+        se_content: "瑞典文内容"
