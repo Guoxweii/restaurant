@@ -1,4 +1,4 @@
 <%= render :partial => "left-menu" %>
 <div class="content">
-	<%= raw @item.en_content %>
+	<%=raw show_value_with_language(@item, "content") %>
 </div>
