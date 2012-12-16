@@ -20,12 +20,23 @@
 			<li><%= link_to "svenska", categories_path(:local => "se"), :tabindex => "-1" %></li>
 		</ul>
 	</div>
+	<div class="weibo">
+		<%= link_to "https://twitter.com/littleluren", :target => "_blank" do %>
+			<%= image_tag "twitter.GIF" %>
+		<% end %>
+		<%= link_to "https://twitter.com/littleluren", :target => "_blank" do %>
+			<%= image_tag "facebook.GIF" %>
+		<% end %>
+		<%= link_to "https://plus.google.com/u/0/117925153747436310351/posts", :target => "_blank" do %>
+			<%= image_tag "google+.png" %>
+		<% end %>
+	</div>
 </div>
 <div class="wrapper">
 	<%= yield %>
 </div>
 <div class="footer">
-	Copyright 2012@12 高工科技
+	Copyright 2012@高工科技
 </div>
 </body>
 </html>
