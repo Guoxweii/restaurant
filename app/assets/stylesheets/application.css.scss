@@ -47,12 +47,20 @@ body {
 			}
 		}
 	}
+	.footer {
+		position: relative;
+		width: 960px;
+		height: 40px;
+		margin: 0 auto;
+		font-size: 16px;
+		line-height: 40px;
+		background: #F7F7F7;
+	}
 }
 
 .wrapper {
-	margin: 0 auto;
+	margin: 10px auto;
 	width: 960px;
-	background-color: blue;
 	min-height: 500px;
 }
 
