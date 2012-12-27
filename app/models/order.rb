@@ -1,4 +1,4 @@
 class Order < ActiveRecord::Base
-  # attr_accessible :en_content, :se_content, :category_id
+  attr_accessible :ip_address, :name, :address, :telephone, :email, :ok_time
   has_and_belongs_to_many :varieties
 end

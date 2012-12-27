@@ -1,0 +1,53 @@
+<% content_for :sidebar do %>
+	<h3>过滤条件</h3>
+	<%= simple_form_for @search, :url => admin_orders_path, html: { method: "get" } do |f| %>
+		<%= f.input "ip_address_contains", :label => "ip" %>
+		<%= f.input "name_contains", :label => "姓名" %>
+		<%= f.input "address_contains", :label => "地址" %>
+		<%= f.input "telephone_contains", :label => "电话" %>
+		<%= f.input "email_contains", :label => "邮箱" %>
+		<%= f.input "created_at_greater_than_or_equal_to", :as => :ui_date_picker, :label => "开始时间" %>~<%= f.input "created_at_less_than_or_equal_to", :as => :ui_date_picker, :label => "结束时间" %>
+		<div class="actions">
+			<%= f.submit "检索", class: "btn btn-small" %>
+		</div>
+	<% end %>
+<% end %>
+
+<h2 class="page-header"> 访问列表 </h2>
+<h4> 当前条件下访问总数为: <%= @orders.total_count %></h4>
+<table class="table table-bordered table-striped">
+	<tr>
+		<th><%= sort_link(@search, :ip_address, "ip") %></th>
+		<th><%= sort_link(@search, :name, "姓名") %></th>
+		<th><%= sort_link(@search, :address, "地址") %></th>
+		<th><%= sort_link(@search, :telephone, "电话") %></th>
+		<th><%= sort_link(@search, :email, "邮件") %></th>
+		<th><%= sort_link(@search, :ok_time, "预订送达时间") %></th>
+		<th><%= sort_link(@search, :created_at, "订餐时间") %></th>
+	</tr>
+	<% @orders.each do |order| %>
+		<tr>
+			<td><%= order.ip_address %></td>
+			<td>
+				<%= order.name %>
+			</td>
+			<td>
+				<%= order.address %>
+			</td>
+			<td>
+				<%= order.telephone %>
+			</td>
+			<td>
+				<%= order.email %>
+			</td>
+			<td>
+				<%=l order.ok_time, :format => :long  if order.ok_time %>
+			</td>
+			<td>
+				<%=l order.created_at, :format => :long %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= paginate(@orders, :theme => 'twitter-bootstrap') if !@orders.empty? %>

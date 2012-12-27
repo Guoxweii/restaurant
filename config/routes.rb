@@ -19,6 +19,7 @@ Restaurant::Application.routes.draw do
     
     resources :photos
     resources :cdrs
+    resources :orders
   end
   
   resources :categories do
