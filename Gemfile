@@ -19,6 +19,8 @@ gem "rails-i18n"
 gem 'ranked-model', '~> 0.1.1'
 gem "ckeditor", ">= 3.7.3"
 gem 'ui_datepicker-rails3', '~> 1.1.1'
+gem "savon", "~> 1.1.0"
+gem "httparty"
 
 # Gems used only for assets and not required
 # in production environments by default.

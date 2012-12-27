@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227022416) do
+ActiveRecord::Schema.define(:version => 20121227052400) do
 
   create_table "categories", :force => true do |t|
     t.string   "se_name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20121227022416) do
     t.string   "local_url"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "area"
   end
 
   create_table "ckeditor_assets", :force => true do |t|

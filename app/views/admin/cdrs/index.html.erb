@@ -16,6 +16,7 @@
 	<tr>
 		<th><%= sort_link(@search, :ip_address, "ip") %></th>
 		<th><%= sort_link(@search, :local_url, "访问路径") %></th>
+		<th><%= sort_link(@search, :area, "访问地区") %></th>
 		<th><%= sort_link(@search, :created_at, "访问时间") %></th>
 	</tr>
 	<% @cdrs.each do |cdr| %>
@@ -23,6 +24,9 @@
 			<td><%= cdr.ip_address %></td>
 			<td>
 				<%= cdr.local_url %>
+			</td>
+			<td>
+				<%= cdr.area %>
 			</td>
 			<td>
 				<%=l cdr.created_at, :format => :long %>

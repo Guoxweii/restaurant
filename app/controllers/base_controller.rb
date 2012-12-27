@@ -11,6 +11,11 @@ class BaseController < ApplicationController
     Cdr.create! do |cdr|
       cdr.ip_address = request.ip
       cdr.local_url = request.fullpath
+      begin
+        cdr.area = Cdr.get("http://www.youdao.com/smartresult-xml/search.s?type=ip&q=" + request.ip)["smartresult"]["product"]["location"]
+      rescue
+        cdr.area = ""
+      end
     end
   end
 end
