@@ -18,10 +18,12 @@ Restaurant::Application.routes.draw do
     end
     
     resources :photos
+    resources :cdrs
   end
   
   resources :categories do
   end
   
   root :to => redirect {|p, r| "#{r.script_name}/categories" }
+  
 end

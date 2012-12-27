@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121201141044) do
+ActiveRecord::Schema.define(:version => 20121227022416) do
 
   create_table "categories", :force => true do |t|
     t.string   "se_name"
@@ -22,12 +22,52 @@ ActiveRecord::Schema.define(:version => 20121201141044) do
     t.integer  "row_order"
   end
 
+  create_table "cdrs", :force => true do |t|
+    t.string   "ip_address"
+    t.string   "local_url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ckeditor_assets", :force => true do |t|
+    t.string   "data_file_name",                  :null => false
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.integer  "assetable_id"
+    t.string   "assetable_type",    :limit => 30
+    t.string   "type",              :limit => 30
+    t.integer  "width"
+    t.integer  "height"
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
+
+  add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
+  add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
+
   create_table "items", :force => true do |t|
-    t.integer  "cateogory_id"
-    t.string   "en_content"
-    t.string   "se_content"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "category_id"
+    t.text     "en_content"
+    t.text     "se_content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "ip_address"
+    t.string   "address"
+    t.string   "name"
+    t.string   "email"
+    t.string   "telephone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "orders_varieties", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "variety_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "photos", :force => true do |t|
@@ -53,5 +93,15 @@ ActiveRecord::Schema.define(:version => 20121201141044) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "varieties", :force => true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.string   "ancestry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "varieties", ["ancestry"], :name => "index_varieties_on_ancestry"
 
 end

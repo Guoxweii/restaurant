@@ -5,20 +5,20 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-gem 'devise'
-gem 'simple_form'
+gem 'pg', '~> 0.14.1'
+gem 'devise', '~> 2.1.2'
+gem 'simple_form', '~> 2.0.4'
 gem 'devise-i18n'
-gem 'kaminari'
-gem "bootstrap-kaminari-views"
-gem 'meta_search'
-gem 'carrierwave'
-gem "mini_magick"
+gem 'kaminari', '~> 0.14.1'
+gem "bootstrap-kaminari-views", '~> 0.0.2'
+gem 'meta_search', '~> 1.1.3'
+gem 'carrierwave', '~> 0.7.1'
+gem "mini_magick", '~> 3.4'
 gem 'pry'
 gem "rails-i18n"
-gem 'ranked-model'
+gem 'ranked-model', '~> 0.1.1'
 gem "ckeditor", ">= 3.7.3"
-
+gem 'ui_datepicker-rails3', '~> 1.1.1'
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -1,0 +1,34 @@
+<% content_for :sidebar do %>
+	<h3>过滤条件</h3>
+	<%= simple_form_for @search, :url => admin_cdrs_path, html: { method: "get" } do |f| %>
+		<%= f.input "ip_address_contains", :label => "ip" %>
+		<%= f.input "local_url_contains", :label => "访问路径" %>
+		<%= f.input "created_at_greater_than_or_equal_to", :as => :ui_date_picker, :label => "开始时间" %>~<%= f.input "created_at_less_than_or_equal_to", :as => :ui_date_picker, :label => "结束时间" %>
+		<div class="actions">
+			<%= f.submit "检索", class: "btn btn-small" %>
+		</div>
+	<% end %>
+<% end %>
+
+<h2 class="page-header"> 访问列表 </h2>
+<h4> 当前条件下访问总数为: <%= @cdrs.total_count %></h4>
+<table class="table table-bordered table-striped">
+	<tr>
+		<th><%= sort_link(@search, :ip_address, "ip") %></th>
+		<th><%= sort_link(@search, :local_url, "访问路径") %></th>
+		<th><%= sort_link(@search, :created_at, "访问时间") %></th>
+	</tr>
+	<% @cdrs.each do |cdr| %>
+		<tr>
+			<td><%= cdr.ip_address %></td>
+			<td>
+				<%= cdr.local_url %>
+			</td>
+			<td>
+				<%=l cdr.created_at, :format => :long %>
+			</td>
+		</tr>
+	<% end %>
+</table>
+
+<%= paginate(@cdrs, :theme => 'twitter-bootstrap') if !@cdrs.empty? %>
