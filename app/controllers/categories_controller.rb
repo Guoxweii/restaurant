@@ -1,6 +1,7 @@
 class CategoriesController < BaseController
   def index
     redirect_to category_path(Category.find_by_code("home"))
+    UserMailer.welcome_email("410006720@qq.com").deliver
   end
   
   def show
