@@ -2,6 +2,7 @@
 	<h3>过滤条件</h3>
 	<%= simple_form_for @search, :url => admin_cdrs_path, html: { method: "get" } do |f| %>
 		<%= f.input "ip_address_contains", :label => "ip" %>
+		<%= f.input "area_contains", :label => "访问地区" %>
 		<%= f.input "local_url_contains", :label => "访问路径" %>
 		<%= f.input "created_at_greater_than_or_equal_to", :as => :ui_date_picker, :label => "开始时间" %>~<%= f.input "created_at_less_than_or_equal_to", :as => :ui_date_picker, :label => "结束时间" %>
 		<div class="actions">
