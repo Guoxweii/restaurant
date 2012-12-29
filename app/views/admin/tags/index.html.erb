@@ -1,0 +1,15 @@
+<%= content_for :head do %>
+	<style type="text/css">
+		.btn-group {
+			float: right;
+		}
+	</style>
+<% end %>
+<h2 class="page-header">菜单列表</h2>
+
+<%= render :partial => "list" %>
+
+<br />
+
+<%= link_to '新分类', new_admin_variety_tag_path(@parent), class: "btn btn-primary" %>
+<%= link_to '返回上级', admin_varieties_path, class: "btn" %>

@@ -1,0 +1,5 @@
+<h2 class="page-header">修改菜单</h2>
+
+<%= simple_form_for(@variety, :url => admin_variety_path(@variety) ) do |f| %>
+	<%= render :partial => "form", :locals => { :f => f } %>
+<% end %>

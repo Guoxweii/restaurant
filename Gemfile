@@ -4,7 +4,7 @@ gem 'rails', '3.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem 'ancestry'
 gem 'pg', '~> 0.14.1'
 gem 'devise', '~> 2.1.2'
 gem 'simple_form', '~> 2.0.4'

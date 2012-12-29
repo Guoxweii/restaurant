@@ -20,6 +20,16 @@ Restaurant::Application.routes.draw do
     resources :photos
     resources :cdrs
     resources :orders
+    resources :varieties do
+      scope "/:sort" do
+        put 'sort', :on => :member
+      end
+      resources :tags do
+        scope "/:sort" do
+          put 'sort', :on => :member
+        end
+      end
+    end
   end
   
   resources :categories do

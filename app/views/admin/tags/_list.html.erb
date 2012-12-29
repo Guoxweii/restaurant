@@ -1,0 +1,23 @@
+<table id="table" class="table table-bordered">
+	<tr>
+		<th>英文名</th>
+		<th>瑞典名</th>
+		<th>操作</th>
+	</tr>
+
+<% @tags.each do |tag| %>
+	<tr>
+		<td><%= tag.en_name %></td>
+		<td><%= tag.se_name %></td>
+		<td>
+			<%= link_to '编辑', edit_admin_variety_tag_path(@parent, tag), class: "btn" %> |
+			<%= link_to '删除', admin_variety_tag_path(@parent, tag), confirm: '确定删除?', method: :delete, class: "btn" %>
+			
+			<div class="btn-group">
+				<%= link_to '<i class="icon-chevron-up"></i>'.html_safe, sort_admin_variety_tag_path(@parent, 'up', tag), :remote => true, :method => :put, :class => "btn", :title => "上移" %>
+				<%= link_to '<i class="icon-chevron-down"></i>'.html_safe, sort_admin_variety_tag_path(@parent, 'down', tag), :remote => true, :method => :put, :class => "btn", :title => "下移" %>
+			</div>
+		</td>
+	</tr>
+<% end %>
+</table>

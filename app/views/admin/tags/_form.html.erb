@@ -1,0 +1,9 @@
+<%= f.input :en_name %>
+<%= f.input :se_name %>
+<%= f.input :code %>
+
+<div class="form-actions">
+	<%= f.button :submit, class: "btn btn-primary" %>
+	
+	<%= link_to "返回", admin_variety_tags_path(@parent), :class => "btn btn-primary" %>
+</div>
