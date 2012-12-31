@@ -46,11 +46,12 @@
 		.radio-toolbar label {
 			display:inline-block;
 			background-color: #ddd;
-			padding: 4px 11px;
+			padding: 4px 15px;
 			font-family: Arial;
 			font-size: 18px;
 			height: 20px;
 			line-height: 20px;
+			margin-right: 30px;
 		}
 
 		.radio-toolbar input[type="radio"]:checked + label {
