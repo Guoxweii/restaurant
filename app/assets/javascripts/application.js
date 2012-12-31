@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.ui.all
-//= require jquery-ui
 //= require jquery-ui-timepicker-addon-1.0.5
 
 $(function() {
