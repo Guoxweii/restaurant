@@ -1,0 +1,36 @@
+<%= render :partial => "left-menu" %>
+<div id="menu" class="content">
+	<%= simple_form_for @order, :url => check_category_path(@category) do |f| %>
+	<div class="introduction">
+	<%=raw show_value_with_language(@item, "content") %>
+	</div>
+	<div class="order">
+		<label> Your personal information </label>
+		<%= f.input :address %>
+		<%= f.input :telephone %>
+		<%= f.input :name %>
+		<%= f.input :email %>
+		<br/>
+		<label> Your order </label>
+		<% @varieties.each_with_index do |variety, index| %>
+			<div class="radio-toolbar">
+			<span><%= show_value_with_language(variety, "name") %></span>
+			<br/>
+			<% @tags[index].each_with_index do |tag, i| %>
+				<% if @variety && value = @variety[index.to_s]  %>
+				<%= radio_button("variety", index, tag.id, :checked =>  value.to_i == tag.id) %>
+				<% else %>
+				<%= radio_button("variety", index, tag.id, :checked => i == 0) %>
+				<% end -%>
+				<label for="<%= "variety_#{index}_#{tag.id}" %>">
+					<%= show_value_with_language(tag, "name") %>
+				</label>
+			<% end %>
+			</div>
+		<% end %>
+		<%= f.input :num, :collection => 1..1000 %>
+		<%= f.input :ok_time, :as => :ui_datetime_picker %>
+	</div>
+	<%= submit_tag "submit", class: "btn btn-primary", :disable_with => "Please wait..." %>
+	<% end %>
+</div>

@@ -33,7 +33,11 @@ Restaurant::Application.routes.draw do
   end
   
   resources :categories do
+    get  'menu',  :on => :member
+    post 'check', :on => :member
+    post 'ok',    :on => :member
   end
+  
   
   root :to => redirect {|p, r| "#{r.script_name}/categories" }
   

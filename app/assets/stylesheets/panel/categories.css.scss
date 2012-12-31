@@ -2,7 +2,7 @@
 	.left-menu {
 		float: left;
 		width: 200px;
-		min-height: 540px;
+		min-height: 545px;
 		background: #3a3a3a;
 		
 		ul {
@@ -26,4 +26,41 @@
 #map_canvas {
 	width: 760px;
 	height: 544px;
+}
+
+#menu {
+	
+	.introduction {
+		width: 100%;
+		margin: 20px;
+	}
+	
+	.order {
+		margin: 20px;
+		padding-left: 20px;
+		background: #fffee3;
+		.radio-toolbar input[type="radio"] {
+			display:none;
+		}
+
+		.radio-toolbar label {
+			display:inline-block;
+			background-color: #ddd;
+			padding: 4px 11px;
+			font-family: Arial;
+			font-size: 18px;
+			height: 20px;
+			line-height: 20px;
+		}
+
+		.radio-toolbar input[type="radio"]:checked + label {
+			background: image-url("check-bg.png");
+			@include background-size(100% 28px);
+		}
+	}
+	
+	.btn {
+		margin-left: 20px;
+		width: 100px;
+	}
 }

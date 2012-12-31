@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <p><h2>a new order</h2></p>
+    <table>
+      <tr>
+        <th>name</th>
+        <td><%= @order.name %></td>
+      </tr>
+      <tr>
+        <th>address</th>
+        <td><%= @order.address %></td>
+      </tr>
+      <tr>
+        <th>telephone</th>
+        <td><%= @order.telephone %></td>
+      </tr>
+      <tr>
+        <th>email</th>
+        <td><%= @order.email %></td>
+      </tr>
+      <% @order.varieties.each do |variety| %>
+      <tr>
+        <th><%= variety.parent.en_name %></th>
+        <td><%= variety.en_name %></td>
+      </tr>
+      <% end %>
+    </table>
+  </body>
+</html>
