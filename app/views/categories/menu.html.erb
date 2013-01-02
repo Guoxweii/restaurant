@@ -16,7 +16,7 @@
 			<div class="radio-toolbar">
 			<span><%= show_value_with_language(variety, "name") %></span>
 			<br/>
-			<% @tags[index].each_with_index do |tag, i| %>
+			<% @tags[index].sort{|tag| tag.row_order }.each_with_index do |tag, i| %>
 				<% if @variety && value = @variety[index.to_s]  %>
 				<%= radio_button("variety", index, tag.id, :checked =>  value.to_i == tag.id) %>
 				<% else %>
