@@ -29,7 +29,7 @@ class CategoriesController < BaseController
   def menu
     @category = Category.find(params[:id])
     @item = @category.items.first
-    @varieties = Variety.roots
+    @varieties = Variety.roots.rank(:row_order)
     @tags = @varieties.map(&:children)
     @order = Order.new
   end
@@ -52,7 +52,7 @@ class CategoriesController < BaseController
   
   private
   def get_left_menu_data
-    @categories = Category.all
+    @categories = Category.rank(:row_order)
   end
   
   def relation_order_with_varieties
