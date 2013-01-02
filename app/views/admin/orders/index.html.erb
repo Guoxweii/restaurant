@@ -24,6 +24,7 @@
 		<th><%= sort_link(@search, :email, "邮件") %></th>
 		<th><%= sort_link(@search, :ok_time, "预订送达时间") %></th>
 		<th><%= sort_link(@search, :created_at, "订餐时间") %></th>
+		<th> detail </th>
 	</tr>
 	<% @orders.each do |order| %>
 		<tr>
@@ -45,6 +46,9 @@
 			</td>
 			<td>
 				<%=l order.created_at, :format => :long %>
+			</td>
+			<td>
+				<%= link_to "detail", admin_order_path(order), :rel => "shadowbox", :class => "btn btn-primary" %>
 			</td>
 		</tr>
 	<% end %>

@@ -5,4 +5,9 @@ class Admin::OrdersController < Admin::BaseController
     @search = Order.search(params[:search])
     @orders = @search.page(params[:page])
   end
+  
+  def show
+    @order = Order.find(params[:id])
+    render :layout => nil
+  end
 end
