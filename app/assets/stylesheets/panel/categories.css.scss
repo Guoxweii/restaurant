@@ -1,30 +1,5 @@
-.wrapper {
-	.left-menu {
-		float: left;
-		width: 200px;
-		min-height: 545px;
-		background: #3a3a3a;
-		
-		ul {
-			padding-top: 50px;
-			list-style: none;
-			li {
-				height: 30px;
-				text-align: left;
-				padding-left: 10px;
-			}
-		}
-	}
-	.content {
-		width: auto;
-		margin: 0 0 0 200px;
-		min-height: 540px;
-		border: solid 2px;
-	}
-}
-
 #map_canvas {
-	width: 760px;
+	width: 620px;
 	height: 544px;
 }
 

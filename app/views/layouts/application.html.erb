@@ -1,42 +1,98 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Restaurant</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  <%= yield :head %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--[if lt IE 7 ]> <html dir="ltr" lang="en-US" class=" ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html dir="ltr" lang="en-US" class="ie7"> <![endif]-->
+<!--[if (gt IE 7)|!(IE)]><!--> <html dir="ltr" lang="en-US"> <!--<![endif]-->
+
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title> Beni's home </title>
+	<link rel="stylesheet" type="text/css" media="all" href="http://nudgedesign.ca/wordpress-themes/liquorice/wp-content/themes/liquorice/style.css" />
+	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/" />
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/rss/" />
+	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/atom/" />
+	<link rel="pingback" href="http://nudgedesign.ca/wordpress-themes/liquorice/xmlrpc.php" />
+    <meta name="viewport" content="width=device-width, user-scalable=yes initial-scale=1.0, minimum-scale=1.0">
+	<meta name='robots' content='noindex,nofollow' />
+	<link rel="alternate" type="application/rss+xml" title="Liquorice Theme &raquo; Feed" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/" />
+	<link rel="alternate" type="application/rss+xml" title="Liquorice Theme &raquo; Comments Feed" href="http://nudgedesign.ca/wordpress-themes/liquorice/comments/feed/" />
+	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nudgedesign.ca/wordpress-themes/liquorice/xmlrpc.php?rsd" />
+	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nudgedesign.ca/wordpress-themes/liquorice/wp-includes/wlwmanifest.xml" /> 
+	<meta name="generator" content="WordPress 3.4.2" />
+	<%= stylesheet_link_tag    "menu", :media => "all" %>
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	<%= yield :head %>
 </head>
-<body>
-<div class="header">
-	<div class="dropdown">
-		<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
-			<%= session[:local] == "en" ? "English" : "svenska" %>
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-			<li><%= link_to "English", categories_path(:local => "en"), :tabindex => "-1" %></li>
-			<li class="divider"></li>
-			<li><%= link_to "svenska", categories_path(:local => "se"), :tabindex => "-1" %></li>
+
+<body class="home blog" >
+
+<div id="canvas">
+	<div id="social-icons">
+		<a href="http://facebook" class="facebook">Facebook</a>
+		<a href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/" class="rss">RSS Feed</a>
+		<div id="dropdown" class="dropdown">
+			<button class="btn btn-inverse dropdown-toggle" data-toggle="dropdown">
+				<%= session[:local] == "en" ? "English" : "svenska" %>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+				<li><%= link_to "English", categories_path(:local => "en"), :tabindex => "-1" %></li>
+				<li class="divider"></li>
+				<li><%= link_to "svenska", categories_path(:local => "se"), :tabindex => "-1" %></li>
+			</ul>
+		</div>
+	</div>
+	<ul class="skip">
+		<li><a href=".menu">Skip to navigation</a></li>
+		<li><a href="#primaryContent">Skip to main content</a></li>
+		<li><a href="#secondaryContent">Skip to secondary content</a></li>
+		<li><a href="#footer">Skip to footer</a></li>
+	</ul>
+
+	<div id="header-wrap">
+		<div id="header"> 
+			<h1 id="site-title">
+				<span>
+					<a href="http://nudgedesign.ca/wordpress-themes/liquorice/" title="Liquorice Theme" rel="home">Beni's home</a>
+				</span>
+			</h1>
+			<div id="site-description">Making things a little sweeter</div>   
+      <!--by default your pages will be displayed unless you specify your own menu content under Menu through the admin panel-->
+		<div class="main-menu">
+			<div class="menu-header">
+				<ul id="menu-prime-menu" class="menu">
+					<% @categories.each do |category| %>
+					<li id="menu-item-580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-580">
+						<%= link_to show_value_with_language(category, "name"), category_path(category) %>
+					</li>
+					<% end %>
+				</ul>
+				</div>
+			</div>
+		</div> <!-- end #header-->
+	</div> <!-- end #header-wrap-->
+	<div id="primaryContent">
+		<%= yield %>
+	</div>
+	<div id="secondaryContent">
+		<ul>
+			<li id="linkcat-2" class="linkcat">Menus
+				<ul class='xoxo blogroll'>
+					<% @categories.each do |category| %>
+					<li>
+						<%= link_to show_value_with_language(category, "name"), category_path(category) %>
+					</li>
+					<% end %>
+				</ul>
+			</li>
 		</ul>
 	</div>
-	<div class="weibo">
-		<%= link_to "https://twitter.com/littleluren", :target => "_blank" do %>
-			<%= image_tag "twitter.GIF" %>
-		<% end %>
-		<%= link_to "https://twitter.com/littleluren", :target => "_blank" do %>
-			<%= image_tag "facebook.GIF" %>
-		<% end %>
-		<%= link_to "https://plus.google.com/u/0/117925153747436310351/posts", :target => "_blank" do %>
-			<%= image_tag "google+.png" %>
-		<% end %>
-	</div>
 </div>
-<div class="wrapper">
-	<%= yield %>
+<div id="footer">
+	<p>Copyright &copy; 2013  Beni's home </p>
 </div>
-<div class="footer">
-	Copyright 2012@高工科技
 </div>
+
 </body>
 </html>

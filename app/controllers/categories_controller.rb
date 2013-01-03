@@ -50,6 +50,11 @@ class CategoriesController < BaseController
     end
   end
   
+  def ok
+    render :layout => "menu"
+  end
+  
+  
   private
   def get_left_menu_data
     @categories = Category.rank(:row_order)

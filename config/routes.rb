@@ -35,7 +35,7 @@ Restaurant::Application.routes.draw do
   resources :categories do
     get  'menu',  :on => :member
     post 'check', :on => :member
-    post 'ok',    :on => :member
+    get 'ok',    :on => :member
   end
   
   
