@@ -4,12 +4,6 @@
 	<%=raw show_value_with_language(@item, "content") %>
 	</div>
 	<div class="order">
-		<label> Your personal information </label>
-		<%= f.input :address,:label => (session[:local] == "en" ? "address" : "adress") %>
-		<%= f.input :telephone,:label => (session[:local] == "en" ? "telephone" : "telefon") %>
-		<%= f.input :name,:label => (session[:local] == "en" ? "name" : "namn") %>
-		<%= f.input :email,:label => (session[:local] == "en" ? "email" : "e-post") %>
-		<br/>
 		<label> Your order </label>
 		<% @varieties.each_with_index do |variety, index| %>
 			<div class="radio-toolbar">
@@ -29,6 +23,13 @@
 		<% end %>
 		<%= f.input :num, :collection => 1..1000, :label => (session[:local] == "en" ? "number" : "nummer") %>
 		<%= f.input :ok_time, :as => :ui_datetime_picker, :label => (session[:local] == "en" ? "time" : "tidsperiod") %>
+		<br/>
+		<label> Your personal information </label>
+		<%= f.input :address,:label => (session[:local] == "en" ? "address" : "adress") %>
+		<%= f.input :telephone,:label => (session[:local] == "en" ? "telephone" : "telefon") %>
+		<%= f.input :name,:label => (session[:local] == "en" ? "name" : "namn") %>
+		<%= f.input :email,:label => (session[:local] == "en" ? "email" : "e-post") %>
+		
 	</div>
 	<%= submit_tag "submit", class: "btn btn-primary", :disable_with => "Please wait..." %>
 	<% end %>
