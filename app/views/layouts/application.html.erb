@@ -6,19 +6,7 @@
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title> Beni's home </title>
-	<link rel="stylesheet" type="text/css" media="all" href="http://nudgedesign.ca/wordpress-themes/liquorice/wp-content/themes/liquorice/style.css" />
-	<link href='http://fonts.googleapis.com/css?family=Lobster&subset=latin' rel='stylesheet' type='text/css'>
-	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/" />
-	<link rel="alternate" type="text/xml" title="RSS .92" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/rss/" />
-	<link rel="alternate" type="application/atom+xml" title="Atom 1.0" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/atom/" />
-	<link rel="pingback" href="http://nudgedesign.ca/wordpress-themes/liquorice/xmlrpc.php" />
     <meta name="viewport" content="width=device-width, user-scalable=yes initial-scale=1.0, minimum-scale=1.0">
-	<meta name='robots' content='noindex,nofollow' />
-	<link rel="alternate" type="application/rss+xml" title="Liquorice Theme &raquo; Feed" href="http://nudgedesign.ca/wordpress-themes/liquorice/feed/" />
-	<link rel="alternate" type="application/rss+xml" title="Liquorice Theme &raquo; Comments Feed" href="http://nudgedesign.ca/wordpress-themes/liquorice/comments/feed/" />
-	<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://nudgedesign.ca/wordpress-themes/liquorice/xmlrpc.php?rsd" />
-	<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://nudgedesign.ca/wordpress-themes/liquorice/wp-includes/wlwmanifest.xml" /> 
-	<meta name="generator" content="WordPress 3.4.2" />
 	<%= stylesheet_link_tag    "menu", :media => "all" %>
 	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
@@ -59,22 +47,8 @@
 			</h1>
 			<div id="site-description">Making things a little sweeter</div>   
       <!--by default your pages will be displayed unless you specify your own menu content under Menu through the admin panel-->
-		<div class="main-menu">
-			<div class="menu-header">
-				<ul id="menu-prime-menu" class="menu">
-					<% @categories.each do |category| %>
-					<li id="menu-item-580" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-580">
-						<%= link_to show_value_with_language(category, "name"), category_path(category) %>
-					</li>
-					<% end %>
-				</ul>
-				</div>
-			</div>
 		</div> <!-- end #header-->
 	</div> <!-- end #header-wrap-->
-	<div id="primaryContent">
-		<%= yield %>
-	</div>
 	<div id="secondaryContent">
 		<ul>
 			<li id="linkcat-2" class="linkcat">Menus
@@ -87,6 +61,9 @@
 				</ul>
 			</li>
 		</ul>
+	</div>
+	<div id="primaryContent">
+		<%= yield %>
 	</div>
 </div>
 <div id="footer">

@@ -213,7 +213,7 @@ ol{ padding-left:25px; }
 /*     MAIN CONTENT    
 ---------------------------- */
 #primaryContent {
-	clear:both;
+	// clear:both;
  	float: left;
 	margin: 30px 40px 0 0;
 	padding: 0 15px;
@@ -736,16 +736,16 @@ a:hover.facebook{
     	text-align: left;
     }
 	#primaryContent {
-		float: none;
+		float: left;
 		margin-right: 0;
 		width: auto;
 	}
 	#secondaryContent {
-   		 clear: both;
+   		 // clear: both;
    		 width: auto;
 	}
 	#secondaryContent > ul > li {
-  		 float: left;	
+  		 float: left;
     	 width: 33%;
     }	 
 	#secondaryContent ul ul {
