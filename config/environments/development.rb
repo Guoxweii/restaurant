@@ -41,7 +41,8 @@ Restaurant::Application.configure do
     :domain => "gmail.com",
     :authentication => "plain",
     :user_name => "alphaguoxiongwei@gmail.com",
-    :password => "gxw4635921",
+    :password => "gxw4635921",#yeah It's my own gmail, please have mercy!
+                              #welcome to mail to me! 
     :enable_starttls_auto => true
  }
 end

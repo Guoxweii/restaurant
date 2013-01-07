@@ -14,7 +14,7 @@ class BaseController < ApplicationController
       begin
         cdr.area = Cdr.get("http://www.youdao.com/smartresult-xml/search.s?type=ip&q=" + request.ip)["smartresult"]["product"]["location"]
       rescue
-        cdr.area = "unknown"
+        cdr.area = "unknown area"
       end
     end
   end
