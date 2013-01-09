@@ -61,7 +61,7 @@ module Restaurant
 
     # Enable the asset pipeline
     config.assets.enabled = true
-    config.assets.precompile += ['admin.*', 'shadowbox.*', 'ckeditor/init.js', 'jquery.jcarousel.min.js', 'skin.css', 'menu.*']
+    config.assets.precompile += ['admin.*', 'shadowbox.*', 'ckeditor/init.js', 'jquery.flexslider-min.js', 'flexslider.css', 'menu.*']
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
