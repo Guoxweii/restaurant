@@ -8,12 +8,8 @@
 	<%= javascript_include_tag "application" %>
 	<%= javascript_include_tag "ckeditor/init" %>
 	<%= csrf_meta_tags %>
-	<link rel="stylesheet" type="text/css" href="shadowbox.css">
-	<script type="text/javascript" src="shadowbox.js"></script>
 	<%= stylesheet_link_tag "shadowbox", :media => "all" %>
 	<%= javascript_include_tag "shadowbox" %>
-	<%= stylesheet_link_tag "skin", :media => "all" %>
-	<%= javascript_include_tag "jquery.jcarousel.min" %>
 	<script type="text/javascript">
 	    Shadowbox.init();
 	</script>
@@ -22,58 +18,64 @@
 <body>
 	<h2 class="page-header" style="padding-left: 130px">the order detail</h2>
 	<div id="main-container" class="container">
-		<table class="table table-bordered table-striped">
-			<tr>
-				<th>
-					姓名
-				</th>
-				<td>
-					<%= @order.name %>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					地址
-				</th>
-				<td>
-					<%= @order.address %>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					电话
-				</th>
-				<td>
-					<%= @order.telephone %>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					数量
-				</th>
-				<td>
-					<%= @order.num %>
-				</td>
-			</tr>
-			<tr>
-				<th>
-					预订时间
-				</th>
-				<td>
-					<%= @order.ok_time %>
-				</td>
-			</tr>
-			<% @order.varieties.each do |variety| %>
-			<tr>
-				<th>
-					<%= variety.parent.en_name %>
-				</th>
-				<td>
-					<%= variety.en_name %>
-				</td>
-			</tr>
-			<% end %>
-		</table>
+		<h2> Your Information </h2>
+    <table class="table table-bordered table-striped" border="1">
+      <tr>
+        <th>
+          name
+        </th>
+        <td>
+          <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          address
+        </th>
+        <td>
+          <%= @order.address %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          telephone
+        </th>
+        <td>
+          <%= @order.telephone %>
+        </td>
+      </tr>
+      <tr>
+        <th>
+          description
+        </th>
+        <td>
+          <%= @order.description %>
+        </td>
+      </tr>
+    </table>
+    <h2> the order list</h2>
+    <% @order.checks.each do |check| %>
+      <table class="table table-bordered table-striped" border="1">
+        <tr>
+          <th>
+            number
+          </th>
+          <td>
+            <%= check.num %>
+          </td>
+        </tr>
+        <% check.varieties.each do |variety| %>
+        <tr>
+          <th>
+            <%= session[:local] == "en" ? variety.parent.en_name : variety.parent.se_name %>:
+          </th>
+          <td>
+            <%= session[:local] == "en" ? variety.en_name : variety.se_name %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    <% end %>
 	</div>
 
 </body>

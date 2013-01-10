@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110015046) do
+ActiveRecord::Schema.define(:version => 20130110141807) do
 
   create_table "categories", :force => true do |t|
     t.string   "se_name"
@@ -36,13 +36,12 @@ ActiveRecord::Schema.define(:version => 20130110015046) do
     t.integer  "num",        :default => 1
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+    t.string   "code"
   end
 
   create_table "checks_varieties", :force => true do |t|
-    t.integer  "check_id"
-    t.integer  "variety_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "check_id"
+    t.integer "variety_id"
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -70,8 +69,8 @@ ActiveRecord::Schema.define(:version => 20130110015046) do
   end
 
   create_table "orders", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.datetime "ok_time"
     t.string   "ip_address"
     t.string   "address"
@@ -79,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20130110015046) do
     t.string   "email"
     t.string   "telephone"
     t.text     "description"
+    t.string   "state",       :default => "offline"
   end
 
   create_table "photos", :force => true do |t|

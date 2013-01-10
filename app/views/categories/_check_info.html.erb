@@ -1,0 +1,17 @@
+<div class="check">
+	<table class="table table-condensed">
+		<tr>
+			<th><%= session[:local] == "en" ? "number:" : "nummer:" %></th>
+			<td><%= check.num %></td>
+		</tr>
+		<% check.varieties.each do |variety| %>
+		<tr>
+			<th><%= show_value_with_language(variety.parent, "name") %>:</th>
+			<td><%= show_value_with_language(variety, "name") %></td>
+		</tr>
+		<% end %>
+	</table>
+	<%#= link_to "edit_order", "#", :"data-url" => edit_check_category_path(@category, :check_id => check, :code => @code), :class => "btn edit_check"%>
+	<%= link_to "cancel", "#", :"data-url" => cancel_check_category_path(@category, :check_id => check, :code => @code), :class => "btn cancel_check", :confirm => "are you sure?"%>
+</div>
+

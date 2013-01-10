@@ -4,6 +4,7 @@ class AddChecks < ActiveRecord::Migration
     remove_column :orders, :num
     
     create_table :checks do |t|
+      t.string :code
       t.integer :order_id
       t.integer :num, :default => 1
       t.timestamps
@@ -13,7 +14,6 @@ class AddChecks < ActiveRecord::Migration
     create_table :checks_varieties do |t|
       t.integer  :check_id
       t.integer  :variety_id
-      t.timestamps
     end
     
   end

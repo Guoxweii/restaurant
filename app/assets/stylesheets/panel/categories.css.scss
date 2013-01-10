@@ -14,31 +14,16 @@
 		margin: 20px;
 		padding-left: 20px;
 		background: #fffee3;
-		.radio-toolbar input[type="radio"] {
-			display:none;
-		}
-
-		.radio-toolbar label {
-			display:inline-block;
-			background-color: #ddd;
-			padding: 4px 15px;
-			font-family: Arial;
-			font-size: 18px;
-			height: 20px;
-			line-height: 20px;
-			margin-right: 30px;
-		}
-
-		.radio-toolbar input[type="radio"]:checked + label {
-			background: image-url("check-bg.png");
-			@include background-size(100% 28px);
+		.radio {
+			float: left;
+			min-width: 100px;
 		}
 	}
 	
 	.btn {
-		margin-left: 20px;
 		width: 100px;
 	}
+	
 }
 
 #check {

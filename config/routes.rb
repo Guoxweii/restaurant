@@ -36,6 +36,11 @@ Restaurant::Application.routes.draw do
     get  'menu',  :on => :member
     post 'check', :on => :member
     get 'ok',    :on => :member
+    post 'add', :on => :member
+    get 'add_check', :on => :member
+    get 'edit_check', :on => :member
+    get 'cancel_check', :on => :member
+    get 'list', :on => :member
   end
   
   

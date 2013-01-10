@@ -1,0 +1,15 @@
+<%= simple_form_for @order, :url => check_category_path(@category, :code => @code), :remote => true do |f| %>
+	<label> Your personal information </label>
+	<%= f.input :address,:label => (session[:local] == "en" ? "address" : "adress") %>
+	<%= f.input :telephone,:label => (session[:local] == "en" ? "telephone" : "telefon") %>
+	<%= f.input :name,:label => (session[:local] == "en" ? "name" : "namn") %>
+	<%= f.input :email,:label => (session[:local] == "en" ? "email" : "e-post") %>
+	<style type="text/css">
+		textarea {
+			width: 400px;
+			height: 110px;
+		}
+	</style>
+	<%= f.input :description,:label => (session[:local] == "en" ? "description" : "beskrivning") %>
+	<%= submit_tag "submit", class: "btn btn-primary", :disable_with => "Please wait..." %>
+<% end %>

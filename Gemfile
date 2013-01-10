@@ -21,7 +21,8 @@ gem "ckeditor", ">= 3.7.3"
 gem 'ui_datepicker-rails3', '~> 1.1.1'
 gem "savon", "~> 1.1.0"
 gem "httparty"
-
+gem "uuidtools", "2.1.3"
+gem "symbolize", :require => "symbolize/active_record"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

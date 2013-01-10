@@ -1,0 +1,15 @@
+<% if @order.valid? %>
+
+Shadowbox.open({
+	player:     'iframe',
+	content: 	<%=raw list_category_path(@category, :code => @code, :order_id => @order.id).to_json %>
+});
+
+<% else %>
+
+$(".information").html(<%=raw render(:partial => 'menu_form').to_json %>);
+
+<% end %>
+
+
+

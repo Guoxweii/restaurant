@@ -1,36 +1,89 @@
+<%= content_for :head do %>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".check-submit").live("click", function(event) {
+				event.preventDefault();
+				var self = this;
+				$.ajax({
+					type: 'POST',
+					url: $(this).closest("form").attr('action'),
+					data: $(this).closest("form").serialize(),
+					dataType: 'json',
+					success: function(json) {
+						$(json).insertAfter($(self).closest(".check"));
+						$(self).closest(".check").remove();
+					}
+				})
+			})
+			
+			$(".add_check").live("click", function(event) {
+				event.preventDefault();
+				var self = this;
+				$.ajax({
+					type: 'GET',
+					url: $(this).attr('data-url'),
+					data: $(this).closest("form").serialize(),
+					dataType: 'json',
+					success: function(json) {
+						$(".checks").append(json);
+					}
+				})
+			})
+			
+			$(".edit_check").live("click", function(event) {
+				event.preventDefault();
+				event.stopPropagation();
+				var self = this;
+				$.ajax({
+					type: 'GET',
+					url: $(this).attr('data-url'),
+					data: $(this).closest("form").serialize(),
+					dataType: 'json',
+					success: function(json) {
+						$(json).insertAfter($(self).closest(".check"));
+						$(self).closest(".check").remove();
+					}
+				})
+				return false;
+			})
+			
+			$(".cancel_check").live("click", function(event) {
+				event.preventDefault();
+				var self = this;
+				$.ajax({
+					type: 'GET',
+					url: $(this).attr('data-url'),
+					data: $(this).closest("form").serialize(),
+					dataType: 'json',
+					success: function(json) {
+						$(self).closest(".check").remove();
+					}
+				})
+				return false;
+			})
+			
+			$(".cancel_check_without_id").live("click", function(event) {
+				event.preventDefault();
+				$(this).closest(".check").remove();
+			})
+		})
+	</script>
+<% end %>
 <div id="menu" class="content">
-	<%= simple_form_for @order, :url => check_category_path(@category) do |f| %>
 	<div class="introduction">
 	<%=raw show_value_with_language(@item, "content") %>
 	</div>
 	<div class="order">
-		<label> Your order </label>
-		<% @varieties.each_with_index do |variety, index| %>
-			<div class="radio-toolbar">
-			<span><%= show_value_with_language(variety, "name") %></span>
-			<br/>
-			<% @tags[index].sort{|tag| tag.row_order }.each_with_index do |tag, i| %>
-				<% if @variety && value = @variety[index.to_s]  %>
-				<%= radio_button("variety", index, tag.id, :checked =>  value.to_i == tag.id) %>
-				<% else %>
-				<%= radio_button("variety", index, tag.id, :checked => i == 0) %>
-				<% end -%>
-				<label for="<%= "variety_#{index}_#{tag.id}" %>">
-					<%= show_value_with_language(tag, "name") %>
-				</label>
+		<div class="checks">
+			<span> Your order </span>
+			<% @checks.each do |check, index| %>
+			<%= render :partial => "check_form", :locals => {:check => check, :check_index => index} %>
 			<% end %>
-			</div>
-		<% end %>
-		<%= f.input :num, :collection => 1..1000, :label => (session[:local] == "en" ? "number" : "nummer") %>
-		<%= f.input :ok_time, :as => :ui_datetime_picker, :label => (session[:local] == "en" ? "time" : "tidsperiod") %>
+		</div>
 		<br/>
-		<label> Your personal information </label>
-		<%= f.input :address,:label => (session[:local] == "en" ? "address" : "adress") %>
-		<%= f.input :telephone,:label => (session[:local] == "en" ? "telephone" : "telefon") %>
-		<%= f.input :name,:label => (session[:local] == "en" ? "name" : "namn") %>
-		<%= f.input :email,:label => (session[:local] == "en" ? "email" : "e-post") %>
-		
+		<%= link_to "add_new_order", "#", :"data-url" => add_check_category_path(@category, :code => @code), :class => "btn add_check"%>
+		<div class="information">
+			<%= render :partial => "menu_form" %>
+		</div>
 	</div>
-	<%= submit_tag "submit", class: "btn btn-primary", :disable_with => "Please wait..." %>
-	<% end %>
 </div>
