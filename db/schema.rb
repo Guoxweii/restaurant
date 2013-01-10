@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121231055825) do
+ActiveRecord::Schema.define(:version => 20130110015046) do
 
   create_table "categories", :force => true do |t|
     t.string   "se_name"
@@ -29,6 +29,20 @@ ActiveRecord::Schema.define(:version => 20121231055825) do
     t.datetime "updated_at", :null => false
     t.string   "area"
     t.time     "ok_time"
+  end
+
+  create_table "checks", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "num",        :default => 1
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "checks_varieties", :force => true do |t|
+    t.integer  "check_id"
+    t.integer  "variety_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "ckeditor_assets", :force => true do |t|
@@ -56,20 +70,15 @@ ActiveRecord::Schema.define(:version => 20121231055825) do
   end
 
   create_table "orders", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.datetime "ok_time"
-    t.integer  "num"
     t.string   "ip_address"
     t.string   "address"
     t.string   "name"
     t.string   "email"
     t.string   "telephone"
-  end
-
-  create_table "orders_varieties", :force => true do |t|
-    t.integer "order_id"
-    t.integer "variety_id"
+    t.text     "description"
   end
 
   create_table "photos", :force => true do |t|

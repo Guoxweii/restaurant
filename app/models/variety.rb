@@ -1,5 +1,5 @@
 class Variety < ActiveRecord::Base
-  has_and_belongs_to_many :orders
+  has_and_belongs_to_many :checks
   has_ancestry
   include RankedModel
   ranks :row_order
