@@ -52,7 +52,6 @@ class CategoriesController < BaseController
     @code = params[:check][:code]
     @category = Category.find(params[:id])
     @check = Check.new(params[:check])
-    binding.pry
     relation_check_with_varieties
   end
   
