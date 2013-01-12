@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110141807) do
+ActiveRecord::Schema.define(:version => 20130112145832) do
 
   create_table "categories", :force => true do |t|
     t.string   "se_name"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(:version => 20130110141807) do
     t.datetime "updated_at", :null => false
     t.integer  "row_order"
   end
+
+  add_index "categories", ["row_order"], :name => "index_categories_on_row_order"
 
   create_table "cdrs", :force => true do |t|
     t.string   "ip_address"
@@ -39,10 +41,16 @@ ActiveRecord::Schema.define(:version => 20130110141807) do
     t.string   "code"
   end
 
+  add_index "checks", ["code"], :name => "index_checks_varieties_on_code"
+  add_index "checks", ["order_id"], :name => "index_checks_on_order_id"
+
   create_table "checks_varieties", :force => true do |t|
     t.integer "check_id"
     t.integer "variety_id"
   end
+
+  add_index "checks_varieties", ["check_id"], :name => "index_checks_varieties_on_check_id"
+  add_index "checks_varieties", ["variety_id"], :name => "index_checks_varieties_on_variety_id"
 
   create_table "ckeditor_assets", :force => true do |t|
     t.string   "data_file_name",                  :null => false

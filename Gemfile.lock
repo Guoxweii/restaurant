@@ -43,6 +43,7 @@ GEM
     carrierwave (0.7.1)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    chronic (0.6.7)
     chunky_png (1.2.6)
     ckeditor (3.7.3)
       mime-types
@@ -189,6 +190,9 @@ GEM
     wasabi (2.5.1)
       httpi (~> 1.0)
       nokogiri (>= 1.4.0)
+    whenever (0.7.3)
+      activesupport (>= 2.3.4)
+      chronic (~> 0.6.3)
 
 PLATFORMS
   ruby
@@ -222,3 +226,4 @@ DEPENDENCIES
   uglifier (>= 1.0.3)
   ui_datepicker-rails3 (~> 1.1.1)
   uuidtools (= 2.1.3)
+  whenever (~> 0.7.3)

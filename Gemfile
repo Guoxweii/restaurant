@@ -23,6 +23,7 @@ gem "savon", "~> 1.1.0"
 gem "httparty"
 gem "uuidtools", "2.1.3"
 gem "symbolize", :require => "symbolize/active_record"
+gem "whenever", "~> 0.7.3", :require => false
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
