@@ -1,21 +1,26 @@
 <%= content_for :head do %>
+  <%= stylesheet_link_tag "flexslider", :media => "all" %>
+  <%= javascript_include_tag "jquery.flexslider-min" %>
   <script type="text/javascript">
     $(document).ready(function() {
-        $('#mycarousel').jcarousel({
-          scroll: 1
+        $('.flexslider').flexslider({
+          animation: "slide"
         });
     });
   </script>
 <% end -%>
+<div class="content">
+  <div class="page-header">
+    <h1><%= @category.en_name %>/<%= @category.se_name %></h1>
+  </div>
 
-<div class="page-header">
-  <h1><%= @category.en_name %>/<%= @category.se_name %></h1>
+  <%= link_to "图片管理", admin_photos_path, :class => "btn btn-primay" %>
+  
+  <div class="flexslider">
+    <ul class="slides">
+      <% @photos.each_with_index do |photo, index| %>
+      <li><%= image_tag photo.poster_url(:thumb), :size => "800*500"%></li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-
-<%= link_to "图片管理", admin_photos_path, :class => "btn btn-primay" %>
-
-<ul id="mycarousel" class="jcarousel-skin-tango">
-  <% @photos.each_with_index do |photo, index| %>
-    <li><%= image_tag photo.poster_url(:thumb), :size => "800*500"%></li>
-  <% end %>
-</ul>
