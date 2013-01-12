@@ -18,3 +18,6 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+every 1.day, :at => '4:30 am' do
+  runner "Order.delete_unuseful_data"
+end
