@@ -4,12 +4,14 @@
 			$(".check-submit").live("click", function(event) {
 				event.preventDefault();
 				var self = this;
+				$(".loading").show();
 				$.ajax({
 					type: 'POST',
 					url: $(this).closest("form").attr('action'),
 					data: $(this).closest("form").serialize(),
 					dataType: 'json',
 					success: function(json) {
+						$(".loading").hide();
 						$(json).insertAfter($(self).closest(".check"));
 						$(self).closest(".check").remove();
 					}
@@ -19,12 +21,14 @@
 			$(".add_check").live("click", function(event) {
 				event.preventDefault();
 				var self = this;
+				$(".loading").show();
 				$.ajax({
 					type: 'GET',
 					url: $(this).attr('data-url'),
 					data: $(this).closest("form").serialize(),
 					dataType: 'json',
 					success: function(json) {
+						$(".loading").hide();
 						$(".checks").append(json);
 					}
 				})
@@ -34,12 +38,14 @@
 				event.preventDefault();
 				event.stopPropagation();
 				var self = this;
+				$(".loading").show();
 				$.ajax({
 					type: 'GET',
 					url: $(this).attr('data-url'),
 					data: $(this).closest("form").serialize(),
 					dataType: 'json',
 					success: function(json) {
+						$(".loading").hide();
 						$(json).insertAfter($(self).closest(".check"));
 						$(self).closest(".check").remove();
 					}
@@ -50,12 +56,14 @@
 			$(".cancel_check").live("click", function(event) {
 				event.preventDefault();
 				var self = this;
+				$(".loading").show();
 				$.ajax({
 					type: 'GET',
 					url: $(this).attr('data-url'),
 					data: $(this).closest("form").serialize(),
 					dataType: 'json',
 					success: function(json) {
+						$(".loading").hide();
 						$(self).closest(".check").remove();
 					}
 				})
@@ -66,22 +74,32 @@
 				event.preventDefault();
 				$(this).closest(".check").remove();
 			})
+
+
 		})
+
+		window.onscroll = function() {
+			$(".loading")[0].style.top = (document.documentElement.scrollTop + (document.documentElement.clientHeight - $(".loading")[0].offsetHeight) / 2) + "px";
+			$(".loading")[0].style.left = (document.documentElement.scrollLeft + (document.documentElement.clientWidth - $(".loading")[0].offsetWidth) / 2) + "px";
+		}
+		
 	</script>
 <% end %>
 <div id="menu" class="content">
 	<div class="introduction">
-	<%=raw show_value_with_language(@item, "content") %>
+		<%=raw show_value_with_language(@item, "content") %>
 	</div>
 	<div class="order">
 		<div class="checks">
-			<span> Your order </span>
+			<span class="label label-info">Your order</span>
 			<% @checks.each do |check, index| %>
 			<%= render :partial => "check_form", :locals => {:check => check, :check_index => index} %>
 			<% end %>
 		</div>
 		<br/>
-		<%= link_to "add_new_order", "#", :"data-url" => add_check_category_path(@category, :code => @code), :class => "btn add_check"%>
+		<%= link_to "#", :"data-url" => add_check_category_path(@category, :code => @code), :class => "btn add_check" do %>
+			<i class="icon-plus-sign"></i> Add order
+		<% end %>
 		<div class="information">
 			<%= render :partial => "menu_form" %>
 		</div>

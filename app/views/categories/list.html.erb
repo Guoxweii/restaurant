@@ -21,6 +21,11 @@
 			});
 			
 			$(".ok").live("click", function() {
+				var p$ = window.parent.$;
+				p$(".loading").show();
+				p$("a").href = "#";
+				p$("a").unbind("click");
+				p$("form").action = "#";
 				window.parent.location.href = $(this).attr('data-url');
 				window.parent.Shadowbox.close();
 			})
@@ -88,9 +93,13 @@
 				<% end %>
 			</table>
 		<% end %>
-		
+		<style type="text/css">
+			.btn-primary {
+				width: 100px;
+			}
+		</style>
 		<%= link_to "OK", "#", :"data-url" => ok_category_path(@category, :code => @code, :order_id => @order.id), :class => "btn btn-primary ok" %>
-		<%= link_to "Cancel", "#", :class => "btn btn-primary cancel" %>
+		<%= link_to "Cancel", "#", :class => "btn cancel" %>
 	</div>
 
 </body>

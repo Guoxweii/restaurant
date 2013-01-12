@@ -1,5 +1,6 @@
 <%= simple_form_for @order, :url => check_category_path(@category, :code => @code), :remote => true do |f| %>
-	<label> Your personal information </label>
+	<br/>
+	<span class="label label-info">Your personal information</span>
 	<%= f.input :address,:label => (session[:local] == "en" ? "address" : "adress") %>
 	<%= f.input :telephone,:label => (session[:local] == "en" ? "telephone" : "telefon") %>
 	<%= f.input :name,:label => (session[:local] == "en" ? "name" : "namn") %>

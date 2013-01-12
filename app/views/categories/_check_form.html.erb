@@ -1,4 +1,4 @@
-<div class="check">
+<div class="check alert alert-info">
 <%= simple_form_for check, :url => add_category_path(@category), :remote => true, :class => "check-form" do |f| %>
 	<% @varieties.each_with_index do |variety, index| %>
 		<br/><br/>
@@ -19,11 +19,16 @@
 	<br/><br/>
 	<%= f.input :num, :collection => 1..1000, :label => (session[:local] == "en" ? "number" : "nummer"), :include_blank => false %>
 	<%= hidden_field_tag "check[code]", @code.to_s %>
-	<%= submit_tag "add order", class: "btn btn-primary check-submit", :disable_with => "Please wait..." %>
+	<%= submit_tag "Save order", class: "btn check-submit", :disable_with => "Please wait..." %>
+		
 	<% if check.id %>
-		<%= link_to "cancel", "#", :"data-url" => cancel_check_category_path(@category, :check_id => check, :code => @code), :class => "btn edit_check" , :confirm => "are you sure?"%>
+		<%= link_to "#", :"data-url" => cancel_check_category_path(@category, :check_id => check, :code => @code), :class => "btn edit_check" , :confirm => "are you sure?" do %>
+			<i class="icon-remove-sign"></i> Cancel
+		<% end %>
 	<% else %>
-		<%= link_to "cancel", "#", :class => "btn cancel_check_without_id" , :confirm => "are you sure?"%>
+		<%= link_to "#", :class => "btn cancel_check_without_id" , :confirm => "are you sure?" do %>
+			 <i class="icon-remove-sign"></i> Cancel
+		<% end %>
 	<% end %>
 <% end %>
 </div>
