@@ -21,13 +21,23 @@
 			});
 			
 			$(".ok").live("click", function() {
+				$(window).bind("click", function(event) {
+					event.stopPropagation();
+					event.preventDefault();
+				}) 
+				$(".container").html("<div class='label label-info' style='height:100px;margin-top:100px;font-size:30px;line-height:100px'>please wait a moment!</div>");
+				
 				var p$ = window.parent.$;
+				p$.bind("click", function(event) {
+					event.stopPropagation();
+					event.preventDefault();
+				}) 
 				p$(".loading").show();
 				p$("a").href = "#";
 				p$("a").unbind("click");
 				p$("form").action = "#";
 				window.parent.location.href = $(this).attr('data-url');
-				window.parent.Shadowbox.close();
+				// window.parent.Shadowbox.close();
 			})
 		})
 	</script>
@@ -98,8 +108,8 @@
 				width: 100px;
 			}
 		</style>
-		<%= link_to "OK", "#", :"data-url" => ok_category_path(@category, :code => @code, :order_id => @order.id), :class => "btn btn-primary ok" %>
-		<%= link_to "Cancel", "#", :class => "btn cancel" %>
+		<%= link_to "OK", "#", :"data-url" => ok_category_path(@category, :code => @code, :order_id => @order.id), :class => "btn btn-large btn-primary ok" %>
+		<%= link_to "Cancel", "#", :class => "btn btn-large cancel" %>
 	</div>
 
 </body>
