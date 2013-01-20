@@ -91,13 +91,13 @@
 	</div>
 	<div class="order">
 		<div class="checks">
-			<span class="label label-info">Your order</span>
+			<div class="page-info well">Your order</div>
 			<% @checks.each do |check, index| %>
 			<%= render :partial => "check_form", :locals => {:check => check, :check_index => index} %>
 			<% end %>
 		</div>
 		<br/>
-		<%= link_to "#", :"data-url" => add_check_category_path(@category, :code => @code), :class => "btn add_check" do %>
+		<%= link_to "#", :"data-url" => add_check_category_path(@category, :code => @code), :class => "btn btn-large add_check" do %>
 			<i class="icon-plus-sign"></i> Add order
 		<% end %>
 		<div class="information">

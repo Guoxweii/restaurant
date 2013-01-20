@@ -17,12 +17,22 @@
 	
 	.order {
 		padding-left: 20px;
-		background: #fffee3;
+		// background: #fffee3;
 		.radio {
 			float: left;
 			min-width: 100px;
 		}
+		
+		.checks {
+			.page-info {
+				height: 30px;
+				line-height: 30px;
+				font-size: 20px;
+				margin: 20px 0 10px 0;
+			}
+		}
 	}
+	
 	
 	.btn {
 		width: 100px;
@@ -39,7 +49,7 @@
 			width: 128px;
 			height: 128px;
 			background: image-url("images/trash.png") no-repeat center center;
-			@include background-size(80px 80px);
+			@include background-size(40px 40px);
 		}
 	}
 }
