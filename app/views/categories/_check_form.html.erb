@@ -3,7 +3,7 @@
 	<% @varieties.each_with_index do |variety, index| %>
 		<div class="radio-toolbar">
 			<div><%= show_value_with_language(variety, "name") %></div>
-			<% @tags[index].sort{|tag| tag.row_order }.each_with_index do |tag, i| %>
+			<% @tags[index].rank(:row_order).each_with_index do |tag, i| %>
 			<div class="radio">
 				<% if @variety && value = @variety[index.to_s]  %>
 					<%= radio_button("variety", index, tag.id, :checked =>  value.to_i == tag.id) %>
