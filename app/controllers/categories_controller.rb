@@ -59,7 +59,7 @@ class CategoriesController < BaseController
     @category = Category.find(params[:id])
     @code = params[:code]
     @check = Check.new(:code => @code)
-    @varieties = Variety.roots
+    @varieties = Variety.roots.rank(:row_order)
     @tags = @varieties.map(&:children)
   end
   
