@@ -217,7 +217,7 @@ ol{ padding-left:25px; }
  	float: left;
 	margin: 30px 40px 0 0;
 	padding: 0 15px;
-	width: 680px;
+	width: 760px;
 	background: #f4efe8;
 }
 #primaryContent h1, 
@@ -403,7 +403,7 @@ li.postWrapper.sticky {
 ----------------------------*/
 #secondaryContent {
 	background:#e2dbd1; 
-	border: 15px solid #d1bfa6;
+	border: 5px solid #d1bfa6;
 	-moz-border-radius: 6px;
 	-webkit-border-radius: 6px;
 	-o-border-radius: 6px;
@@ -411,7 +411,7 @@ li.postWrapper.sticky {
 	float: left; 
 	margin: 30px 0 0;
 	padding:20px;
-	width: 178px;	
+	width: 118px;	
 }
 .ie6 #secondaryContent {
 	padding:15px;
@@ -422,7 +422,7 @@ li.postWrapper.sticky {
 }
 #secondaryContent ul { 
 	color:#666;
-	font: 16px Georgia, "Times New Roman", Times, serif; 
+	font: 18px Georgia, "Times New Roman", Times, serif; 
 	list-style:none; 
 	margin: 15px 0 30px;
 } 
@@ -816,6 +816,9 @@ a:hover.facebook{
 	}
 }
 
+.xoxo {
+	font-size: 18px;
+}
 
 @import "panel/categories";
 

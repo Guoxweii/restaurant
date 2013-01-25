@@ -41,11 +41,12 @@ class Admin::VarietiesController < Admin::BaseController
   end
   
   def sort
-    varieties = Variety.rank(:row_order).all
+    varieties = Variety.roots.rank(:row_order)
     variety = Variety.find(params[:id])
     
     index = varieties.index(variety)
     index = (params[:sort] == 'up') ? ((index - 1) < 0 ? 0 : index - 1) : ((index + 1 > varieties.size - 1) ? varieties.size - 1 : index + 1)
+    index = Variety.rank(:row_order).index(varieties[index])
     variety.update_attribute :row_order_position, index
     
     @varieties = Variety.roots.rank(:row_order).page(params[:page]).per(20)
