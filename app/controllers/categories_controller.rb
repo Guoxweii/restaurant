@@ -45,7 +45,7 @@ class CategoriesController < BaseController
   
   def ok
     relation_order_with_checks
-    UserMailer.order_email("410006720@qq.com", @order).deliver
+    UserMailer.order_email("order@chowmein.se", @order).deliver
   end
   
   def add
