@@ -45,8 +45,8 @@
 <body>
 	<h2 class="page-header" style="padding-left: 130px">the order detail</h2>
 	<div id="main-container" class="container">
-		<h2> the total price: <%= @checks.map(&:num).inject(&:+) * 60 %> </h2>
-
+		<h2> the total price: <%= (@checks.to_a.map(&:num).inject(&:+) || 0) * 60 %> sek</h2>
+		<br/>
 		<h2> Your Information </h2>
 		<table class="table table-bordered table-striped">
 			<tr>
