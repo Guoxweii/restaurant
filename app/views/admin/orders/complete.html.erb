@@ -1,6 +1,6 @@
 <% content_for :sidebar do %>
 	<h3>过滤条件</h3>
-	<%= simple_form_for @search, :url => admin_orders_path, html: { method: "get" } do |f| %>
+	<%= simple_form_for @search, :url => complete_admin_orders_path, html: { method: "get" } do |f| %>
 		<%= f.input "name_contains", :label => "姓名" %>
 		<%= f.input "address_contains", :label => "地址" %>
 		<%= f.input "telephone_contains", :label => "电话" %>
@@ -41,7 +41,7 @@
 				<%=l order.created_at, :format => :long %>
 			</td>
 			<td>
-				<%= link_to "已送达", completed_admin_order_path(order), :method => :put, :class => "btn btn-primary" %>
+				<%= link_to "未送达", onlined_admin_order_path(order), :method => :put, :class => "btn btn-primary" %>
 				<%= link_to "detail", admin_order_path(order), :rel => "shadowbox", :class => "btn btn-primary" %>
 				<%= link_to "delete", admin_order_path(order), confirm: 'Are you sure?', method: :delete,class: "btn" %>
 			</td>

@@ -36,8 +36,12 @@
 				<li>
 					<%= link_to "图片管理", admin_photos_path %>
 				</li>
-				<li>
-					<%= link_to "订单管理", admin_orders_path %>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"> 订单管理<b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><%= link_to "未送餐列表", admin_orders_path %></li>
+						<li><%= link_to "已送餐列表", complete_admin_orders_path %></li>
+					</ul>
 				</li>
 				<li>
 					<%= link_to "访问管理", admin_cdrs_path %>

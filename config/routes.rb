@@ -19,7 +19,12 @@ Restaurant::Application.routes.draw do
     
     resources :photos
     resources :cdrs
-    resources :orders
+    resources :orders do
+      get 'complete',  :on => :collection
+      put 'onlined',   :on => :member
+      put 'completed', :on => :member
+    end
+    
     resources :varieties do
       scope "/:sort" do
         put 'sort', :on => :member
