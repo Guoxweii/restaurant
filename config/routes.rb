@@ -1,5 +1,7 @@
 Restaurant::Application.routes.draw do
   
+  match '/index.asp', :to => redirect('/links.html')
+  
   mount Ckeditor::Engine => '/ckeditor'
 
   devise_for :users
